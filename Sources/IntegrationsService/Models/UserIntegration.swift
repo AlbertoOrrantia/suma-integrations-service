@@ -10,6 +10,6 @@ import Foundation
 // Tracks the users current state for an integration
 struct UserIntegration: Codable {
     let userId: String
-    let userIntegrationId: String
+    let integrationId: String
     var status: IntegrationStatus
 }
