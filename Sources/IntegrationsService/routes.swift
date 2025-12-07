@@ -1,11 +1,10 @@
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req async in
-        "It works!"
-    }
-
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
+    // Build dependancies
+    let repository = InMemoryIntegrationRepository()
+    let service = IntegrationService(repository: repository)
+    let controller = IntegrationController(service: service)
+    
+    try app.register(collection: controller)
 }

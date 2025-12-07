@@ -5,10 +5,10 @@
 //  Created by Alberto Orrantia on 06/12/25.
 //
 
-import Foundation
+import Vapor
 
 // Describes available third partu integration
-struct Integration: Codable {
+struct Integration: Content {
     let id: String
     let name: String
     let description: String
