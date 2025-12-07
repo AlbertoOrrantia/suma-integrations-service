@@ -12,4 +12,5 @@ enum IntegrationStatus: String, Codable {
     case disconnected
     case pending
     case connected
+    case error
 }
