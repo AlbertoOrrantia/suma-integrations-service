@@ -23,6 +23,16 @@ struct IntegrationController: RouteCollection {
         users.post(":userId", "integrations", ":integrationId", "disconnect", use: disconnectIntegration)
     }
     
+    // MARK: - DTO
+    // Simulated OAuth URL for MVP
+    struct StartConnectionResponse: Content {
+        let authUrl: String
+    }
+    
+    struct CompleteRequest: Content {
+        let success: Bool
+    }
+    
     // MARK: - Handlers
     func getCatalog(_ req: Request) throws -> [Integration] {
         service.getCatalog()
@@ -35,7 +45,7 @@ struct IntegrationController: RouteCollection {
         return service.getUserIntegrations(for: userId)
     }
 
-    func startConnection(_ req: Request) throws -> [UserIntegration] {
+    func startConnection(_ req: Request) throws -> StartConnectionResponse {
         guard
             let userId = req.parameters.get("userId"),
             let integrationId = req.parameters.get("integrationId")
@@ -43,16 +53,15 @@ struct IntegrationController: RouteCollection {
             throw Abort(.badRequest, reason: "Missing userId or integrationId")
         }
 
-        return service.startConnection(
+        _ = service.startConnection(
             for: userId,
             integrationId: integrationId
         )
+        
+        let authUrl = "https://auth.suma.local/authorize?userId=\(userId)&integrationId=\(integrationId)"
+        return StartConnectionResponse(authUrl: authUrl)
     }
-
-    struct CompleteRequest: Content {
-        let success: Bool
-    }
-
+    
     func completeConnection(_ req: Request) throws -> [UserIntegration] {
         guard
             let userId = req.parameters.get("userId"),
