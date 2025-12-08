@@ -24,8 +24,9 @@ final class IntegrationService {
     }
     
     // For MVP purposes, more steps needed for OAuth
+    // Real worldOAuth will include tokens and error propagation
     func startConnection(for userId: String, integrationId: String) -> [UserIntegration] {
-        repository.updateUserIntegration(for: userId, integrationId: integrationId, to: .connected)
+        repository.updateUserIntegration(for: userId, integrationId: integrationId, to: .pending)
     }
     
     func completeConnection(for userId: String, integrationId: String, success: Bool) -> [UserIntegration] {
