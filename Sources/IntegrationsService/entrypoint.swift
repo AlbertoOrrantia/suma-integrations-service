@@ -10,6 +10,10 @@ enum Entrypoint {
         try LoggingSystem.bootstrap(from: &env)
         
         let app = try await Application.make(env)
+        
+        // DEVELOPMENT HOSTNAME FIX: Sets the server to listen on all network interfaces (0.0.0.0)
+        // NOTE: This configuration does NOT affect iOS simulator, this is required for external devices
+        app.http.server.configuration.hostname = "0.0.0.0"
 
         // This attempts to install NIO as the Swift Concurrency global executor.
         // You can enable it if you'd like to reduce the amount of context switching between NIO and Swift Concurrency.
