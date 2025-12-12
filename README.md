@@ -4,7 +4,7 @@
 [![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift)](https://www.swift.org/)
 [![Storage](https://img.shields.io/badge/Storage-InMemory-ff69b4?style=for-the-badge&logo=github)](https://github.com/AlbertoOrrantia)
 
-Hello, I'm **Alberto Orrantia**, the lead developer for the **Suma Connect** integration service.
+Hello, I'm **Alberto Orrantia**
 
 This repository holds the **Vapor backend** for the service. It provides the RESTful API endpoints, business logic, and database persistence required by the iOS client. This is the **Minimum Viable Product (MVP)**, establishing the core architecture for future development.
 
@@ -24,9 +24,9 @@ This repository holds the **Vapor backend** for the service. It provides the RES
 
 | Requirement | Minimal Specs | Recommended (Developer System) | Dependencies |
 | :--- | :--- | :--- | :--- |
-| **Swift** | Swift 5.8+ | Swift 5.9+ | Vapor, FluentKit, SQLiteNIO |
-| **Operating System** | macOS 13+ | macOS 14 (Sonoma) | N/A |
-| **IDE** | Xcode 14+ | Xcode 15+ | N/A |
+| **Swift** | Swift 5.8+ | Swift 6.2+ | Vapor, FluentKit, SQLiteNIO |
+| **Operating System** | macOS 13+ | macOS Tahoe | N/A |
+| **IDE** | Xcode 14+ | Xcode 26.1+ | N/A |
 
 ### Quick Start (Cloning & Running)
 
